@@ -2,7 +2,7 @@
 //  MainWidget.hpp
 //  QTui
 //
-//  Created by Cox Family on 12/31/21.
+//  Created by Hibyehello on 12/31/21.
 //  Copyright © 2021 Hibyehello. All rights reserved.
 //
 
@@ -31,10 +31,14 @@
 
 class MyWidget: public QWidget {
     public:
-    int HasFocus = 0;
-    std::vector<QPushButton*> buttons;
+    int GameFocus = 0;
+    int RowFocus = 0;
+    int SettingFocus = 0;
+    std::vector<QPushButton*> gButtons;
+    std::vector<QPushButton*> sButtons;
     MyWidget(QWidget *parent = 0, const char *name=0);
     void changeFocus();
+    virtual ~MyWidget() {};
     
     protected:
     void keyPressEvent(QKeyEvent *event) override;

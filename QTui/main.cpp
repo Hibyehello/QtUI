@@ -20,7 +20,6 @@ int main(int argc, char * argv[]) {
     MyWidget m;
     
     m.showFullScreen();
-    m.buttons[1]->setFocus(Qt::TabFocusReason);
     
     return app.exec();
 }
