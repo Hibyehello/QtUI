@@ -2,14 +2,25 @@
 //  main.cpp
 //  QTui
 //
-//  Created by Cox Family on 12/30/21.
+//  Created by Hibyehello on 12/30/21.
 //  Copyright © 2021 Hibyehello. All rights reserved.
 //
 
 #include <iostream>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+#include "MainWidget.hpp"
+
+//Qt Includes
+#include <QApplication>
+
+
+int main(int argc, char * argv[]) {
+    QApplication app(argc, argv);
+    
+    MyWidget m;
+    
+    m.showFullScreen();
+    m.buttons[1]->setFocus(Qt::TabFocusReason);
+    
+    return app.exec();
 }

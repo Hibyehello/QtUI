@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A873025D277EA6590050884A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A873025C277EA6590050884A /* main.cpp */; };
+		A8E3BC24277FF8CE0025A4A7 /* MainWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8E3BC22277FF8CE0025A4A7 /* MainWidget.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		A8730259277EA6590050884A /* QTui */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = QTui; sourceTree = BUILT_PRODUCTS_DIR; };
 		A873025C277EA6590050884A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		A8E3BC22277FF8CE0025A4A7 /* MainWidget.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainWidget.cpp; sourceTree = "<group>"; };
+		A8E3BC23277FF8CE0025A4A7 /* MainWidget.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainWidget.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				A873025C277EA6590050884A /* main.cpp */,
+				A8E3BC22277FF8CE0025A4A7 /* MainWidget.cpp */,
+				A8E3BC23277FF8CE0025A4A7 /* MainWidget.hpp */,
 			);
 			path = QTui;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E3BC24277FF8CE0025A4A7 /* MainWidget.cpp in Sources */,
 				A873025D277EA6590050884A /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,18 +238,90 @@
 		A8730261277EA6590050884A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BKKR9KB2P8;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				OTHER_CFLAGS = (
+					"-DQT_CORE_LIB",
+					"-F/opt/local/libexec/qt5/lib",
+					"-I/opt/local/libexec/qt5/lib/QtCore.framework/Headers",
+					"-I/opt/local/libexec/qt5/include",
+					"-DQT_WIDGETS_LIB",
+					"-F/opt/local/libexec/qt5/lib",
+					"-DQT_GUI_LIB",
+					"-F/opt/local/libexec/qt5/lib",
+					"-DQT_CORE_LIB",
+					"-F/opt/local/libexec/qt5/lib",
+					"-I/opt/local/libexec/qt5/lib/QtWidgets.framework/Headers",
+					"-I/opt/local/libexec/qt5/include",
+					"-I/opt/local/libexec/qt5/lib/QtGui.framework/Headers",
+					"-I/opt/local/libexec/qt5/include",
+					"-I/opt/local/libexec/qt5/lib/QtCore.framework/Headers",
+					"-I/opt/local/libexec/qt5/include",
+				);
+				OTHER_LDFLAGS = (
+					"-F/opt/local/libexec/qt5/lib",
+					"-framework",
+					QtCore,
+					"-F/opt/local/libexec/qt5/lib",
+					"-framework",
+					QtWidgets,
+					"-F/opt/local/libexec/qt5/lib",
+					"-framework",
+					QtGui,
+					"-F/opt/local/libexec/qt5/lib",
+					"-framework",
+					QtCore,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.13;
 			};
 			name = Debug;
 		};
 		A8730262277EA6590050884A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BKKR9KB2P8;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				OTHER_CFLAGS = (
+					"-DQT_CORE_LIB",
+					"-F/opt/local/libexec/qt5/lib",
+					"-I/opt/local/libexec/qt5/lib/QtCore.framework/Headers",
+					"-I/opt/local/libexec/qt5/include",
+					"-DQT_WIDGETS_LIB",
+					"-F/opt/local/libexec/qt5/lib",
+					"-DQT_GUI_LIB",
+					"-F/opt/local/libexec/qt5/lib",
+					"-DQT_CORE_LIB",
+					"-F/opt/local/libexec/qt5/lib",
+					"-I/opt/local/libexec/qt5/lib/QtWidgets.framework/Headers",
+					"-I/opt/local/libexec/qt5/include",
+					"-I/opt/local/libexec/qt5/lib/QtGui.framework/Headers",
+					"-I/opt/local/libexec/qt5/include",
+					"-I/opt/local/libexec/qt5/lib/QtCore.framework/Headers",
+					"-I/opt/local/libexec/qt5/include",
+				);
+				OTHER_LDFLAGS = (
+					"-F/opt/local/libexec/qt5/lib",
+					"-framework",
+					QtCore,
+					"-F/opt/local/libexec/qt5/lib",
+					"-framework",
+					QtWidgets,
+					"-F/opt/local/libexec/qt5/lib",
+					"-framework",
+					QtGui,
+					"-F/opt/local/libexec/qt5/lib",
+					"-framework",
+					QtCore,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.13;
 			};
 			name = Release;
 		};
