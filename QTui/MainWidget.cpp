@@ -16,8 +16,8 @@ MyWidget::MyWidget( QWidget *parent, const char *name )
     // Create Layout
     QGridLayout* layout = new QGridLayout;
     this->setLayout(layout);
-    layout->setRowStretch(0, 1);
-    layout->setRowStretch(3, 1);
+    layout->setRowStretch(0, 0);
+    layout->setRowStretch(3, 0);
     
     QWidget *gWidget = new QWidget;
     QWidget *sWidget = new QWidget;
@@ -28,18 +28,20 @@ MyWidget::MyWidget( QWidget *parent, const char *name )
     for(int i = 0; i < 20; i++){
         QPushButton* button = new QPushButton;
         button->setText("Game " + QString::number(i+1));
-        button->setFixedSize(200, 250);
+        button->setFixedSize(375, 500);
         glayout->addWidget(button); // Add the button to the layout
-        button->setStyleSheet("QPushButton:focus {  background-color: red; }");
+        button->setStyleSheet("QPushButton:focus { border-width: 10px; border-style: solid; border-color : rgb(24, 108, 204); border-radius: 10px; } QPushButton{ background-image: url(../game_art.jpg); background-repeat: no-repeat; border-radius: 10px;}");
+        glayout->setAlignment(button, Qt::AlignTop);
         gButtons.push_back(button);
     }
 
     for(int i = 0; i < 5; i++){
         QPushButton* button = new QPushButton;
         button->setText("Setting " + QString::number(i+1));
-        button->setFixedSize(100, 50);
+        button->setFixedSize(100, 100);
         slayout->addWidget(button); // Add the button to the layout
-        button->setStyleSheet("QPushButton:focus {  background-color: red; }");
+        button->setStyleSheet("QPushButton:focus {  border-width: 5px; border-style: solid; border-color : rgb(24, 108, 204); border-radius: 10px; } QPushButton{ background: gray; }");
+        slayout->setAlignment(button, Qt::AlignTop);
         sButtons.push_back(button);
     }
 
@@ -59,7 +61,7 @@ MyWidget::MyWidget( QWidget *parent, const char *name )
 
     // Add Widgets to layout
     layout->addWidget(sWidget, 0, 0);
-    layout->addWidget(scroll, 1, 0, 1, 3);
+    layout->addWidget(scroll, 1, 0, 3, 3);
 };
 
 
@@ -70,13 +72,15 @@ void MyWidget::keyPressEvent(QKeyEvent *event) {
     if(event->key() == Qt::Key_W) {
         if(RowFocus != 0) {
             RowFocus--;
-            sButtons[SettingFocus]->setFocus();
+            sButtons[SettingFocus]->setFocusPolicy(Qt::StrongFocus);
+            sButtons[SettingFocus]->setFocus(Qt::TabFocusReason);
         }
     }
     if(event->key() == Qt::Key_S) {
         if(RowFocus != 1) {
             RowFocus++;
-            gButtons[GameFocus]->setFocus();
+            gButtons[SettingFocus]->setFocusPolicy(Qt::StrongFocus);
+            gButtons[GameFocus]->setFocus(Qt::TabFocusReason);
         }
     }
 
@@ -88,14 +92,14 @@ void MyWidget::keyPressEvent(QKeyEvent *event) {
             } else{
                 GameFocus--;
             }
-
-            gButtons[GameFocus]->setFocus();
+            gButtons[SettingFocus]->setFocusPolicy(Qt::StrongFocus);
+            gButtons[GameFocus]->setFocus(Qt::TabFocusReason);
         } else if(RowFocus == 0) {
             if(SettingFocus > 0) {
                 SettingFocus--;
             }
-
-            sButtons[SettingFocus]->setFocus();
+            sButtons[SettingFocus]->setFocusPolicy(Qt::StrongFocus);
+            sButtons[SettingFocus]->setFocus(Qt::TabFocusReason);
         }
     }
     
@@ -107,14 +111,14 @@ void MyWidget::keyPressEvent(QKeyEvent *event) {
             } else {
             GameFocus++;
             }
-
-            gButtons[GameFocus]->setFocus();
+            gButtons[SettingFocus]->setFocusPolicy(Qt::StrongFocus);
+            gButtons[GameFocus]->setFocus(Qt::TabFocusReason);
         } else if(RowFocus == 0) {
             if(SettingFocus < 4) {
                 SettingFocus++;
             }
-
-            sButtons[SettingFocus]->setFocus();
+            sButtons[SettingFocus]->setFocusPolicy(Qt::StrongFocus);
+            sButtons[SettingFocus]->setFocus(Qt::TabFocusReason);
         }
     }
 }
