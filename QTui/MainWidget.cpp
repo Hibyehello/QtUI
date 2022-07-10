@@ -14,17 +14,17 @@ MyWidget::MyWidget( QWidget *parent, const char *name )
     setWindowTitle("Main");
     
     // Create Layout
-    QGridLayout* layout = new QGridLayout;
+    layout = new QGridLayout;
     this->setLayout(layout);
     layout->setRowStretch(0, 0);
     layout->setRowStretch(3, 0);
     
-    QWidget *gWidget = new QWidget;
-    QWidget *sWidget = new QWidget;
+    gWidget = new QWidget;
+    sWidget = new QWidget;
     
     // Create Scroll layout
-    QHBoxLayout *glayout = new QHBoxLayout;
-    QHBoxLayout *slayout = new QHBoxLayout;
+    glayout = new QHBoxLayout;
+    slayout = new QHBoxLayout;
     for(int i = 0; i < 20; i++){
         QPushButton* button = new QPushButton;
         button->setText("Game " + QString::number(i+1));
@@ -47,7 +47,7 @@ MyWidget::MyWidget( QWidget *parent, const char *name )
 
     sButtons[SettingFocus]->setFocus();
     
-    QScrollArea *scroll = new QScrollArea;
+    scroll = new QScrollArea;
     scroll->setStyleSheet("QScrollBar {height:0px;}");
     scroll->setStyleSheet("QScrollBar {width:0px;}");
     scroll->setFrameShape(scroll->NoFrame);
@@ -94,6 +94,7 @@ void MyWidget::keyPressEvent(QKeyEvent *event) {
             }
             gButtons[SettingFocus]->setFocusPolicy(Qt::StrongFocus);
             gButtons[GameFocus]->setFocus(Qt::TabFocusReason);
+            scroll->ensureWidgetVisible(gButtons[GameFocus]);
         } else if(RowFocus == 0) {
             if(SettingFocus > 0) {
                 SettingFocus--;
@@ -113,6 +114,7 @@ void MyWidget::keyPressEvent(QKeyEvent *event) {
             }
             gButtons[SettingFocus]->setFocusPolicy(Qt::StrongFocus);
             gButtons[GameFocus]->setFocus(Qt::TabFocusReason);
+            scroll->ensureWidgetVisible(gButtons[GameFocus]);
         } else if(RowFocus == 0) {
             if(SettingFocus < 4) {
                 SettingFocus++;

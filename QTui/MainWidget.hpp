@@ -31,17 +31,25 @@
 
 class MyWidget: public QWidget {
     public:
-    int GameFocus = 0;
-    int RowFocus = 0;
-    int SettingFocus = 0;
-    std::vector<QPushButton*> gButtons;
-    std::vector<QPushButton*> sButtons;
     MyWidget(QWidget *parent = 0, const char *name=0);
-    void changeFocus();
     virtual ~MyWidget() {};
     
     protected:
     void keyPressEvent(QKeyEvent *event) override;
     bool focusNextChild();
     bool focusPreviousChild();
+
+    private:
+    int GameFocus = 0;
+    int RowFocus = 0;
+    int SettingFocus = 0;
+    QHBoxLayout *glayout;
+    QHBoxLayout *slayout;
+    QGridLayout *layout;
+    QWidget *gWidget;
+    QWidget *sWidget;
+    QScrollArea *scroll;
+    std::vector<QPushButton*> gButtons;
+    std::vector<QPushButton*> sButtons;
+    void changeFocus();
 };
